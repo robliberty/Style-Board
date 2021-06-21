@@ -1,0 +1,436 @@
+<script src="https://kit.fontawesome.com/1c0794db94.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+
+    *{margin: 0;padding: 0;box-sizing: border-box;}
+    body{font-family: 'Poppins', sans-serif;font-size:16px;}
+    
+    .style_board{display:flex;flex-flow:row wrap;padding: 3rem;}
+    
+    section{width: 50%;padding: 1rem 10rem 1rem 1rem;}
+    section .heading{text-transform: uppercase;font-size:1rem;color: #6C6C6C; font-weight:300;}
+    section .heading:after{content:'';width:100%;height: 1px;background: #eee;display: block;margin: .5rem 0 2rem 0;}
+    
+    .typography .item{margin: 0 0 3rem 0;}
+    .typography .item_sub{color: #999999;font-size:14px;font-weight:300;margin: .25rem 0 0 0;}
+    .typography h1{font-weight:600;text-transform: uppercase;line-height: 1;}
+    .typography h2{font-weight:600;text-transform: uppercase;line-height: 1;}
+    .typography h3{font-weight:600;text-transform: uppercase;line-height: 1;}
+    .typography p{line-height: 1.48;}
+    
+    .colors .item{display:flex;flex-flow:row wrap;align-items:center;margin: 0 0 1.5rem 0;}
+    .colors .item_sub{color: #999999;font-size:14px;font-weight:300;}
+    .colors .swatch{border-radius:.8rem;box-shadow: 0 7px 14px -14px rgba(50,50,93,.3);display: block;width: 60px;height: 60px;}
+    .colors .swatch_details{flex:1;padding:0 0 0 2rem;}
+    .colors .swatch_details .name{font-size:1.5rem;line-height: 1;font-weight:300;}
+    
+    .buttons .item{margin: 0 0 3rem 0;}
+    .buttons .item_sub{color: #999999;font-size:14px;font-weight:300;}
+    .buttons .name{font-size:1.5rem;line-height: 1;font-weight:300;}
+    .buttons .button_group{display:flex;flex-flow:row wrap;align-items:center; margin: 1rem 0;}
+    .buttons .button{border-radius:.25rem;text-transform: uppercase; font-size:.9rem;padding: .75rem 1.5rem; border:none; margin: 0 1rem 0 0;}
+    .buttons .button-icon i{margin:0 0 0 1rem;}
+    .buttons .primary .button{color: #fff;}
+    .buttons .secondary .button{color: #fff;}
+    .buttons .ghost .button{background: transparent; border:2px solid;}
+    .buttons .ghost .button-hovered{border:2px solid;}
+    
+    .logo img{width:300px; display: block;}
+    
+    .footer{background: #F2F2F2; padding: 1rem 3rem;display:flex;flex-flow:row wrap;align-items:center;justify-content:space-between;}
+    .footer .company_name{font-size: 2rem; color: #595959; font-weight:600;}
+    .footer .version{color: #999999;font-size:14px;font-weight:300;}
+    .footer .ewd img{width: 150px;}
+    
+    .style_editor{
+        width: 300px;
+        position: absolute;
+        z-index: 1;
+        top:0;
+        right: 0;
+        padding: 1rem;
+        border:1px solid #eee;
+        background: #fff;
+        display:flex;
+        flex-flow:row wrap;
+        justify-content:space-between;
+    }
+    .style_editor > div{
+        margin: 0 0 .5rem 0;
+        width: 100%;
+    }
+    .style_editor > .fontsizer{
+        width: 24%;
+    }
+    .style_editor > .colorpicker{
+        width: 24%;
+    }    
+    .style_editor label{
+        display: block; font-size:11px; color: #999;
+    }
+    .style_editor .note{
+        font-size:12px;
+    }
+    .style_editor input{
+        display: block; width: 100%;border:1px solid #ddd; font-size: 14px;
+    }
+    .style_editor input[type=text]{
+        padding:.25rem;
+    }
+    .style_editor select{
+        display: block; width: 100%;border:1px solid #ddd; font-size: 14px; padding:.25rem;
+    }
+    .style_editor .font-select{
+        border:#ddd 1px solid;
+        padding:.25rem;
+        font-size: 14px
+    }
+    .style_editor .fs-drop{
+        background: #fff;
+        border:#ddd 1px solid;
+        height: 300px;
+        overflow: auto;
+        padding: .5rem;
+    }
+    .style_editor .fs-drop li{
+        list-style:none;
+    }
+</style>
+
+<div class="style_editor">
+    <div class="note">Screenshot this page at 1400px width, press "M" to hide this editor</div>
+    <div><label for="name">Company Name</label><input type="text" id="name"></div>
+    <div><label for="version">Board Version</label><input type="text" id="version" value="1.0"></div>
+    <div><label for="headingFont">Heading Font</label><select name="" id="headingFont"></select></div>
+    <div><label for="paraFont">Paragraph Font</label><select name="" id="paraFont"></select></div>
+    <div class="fontsizer"><label for="h1size">H1 Size</label><input type="text" id="h1size" placeholder="72"></div>
+    <div class="fontsizer"><label for="h2size">H2 Size</label><input type="text" id="h2size" placeholder="48"></div>
+    <div class="fontsizer"><label for="h3size">H3 Size</label><input type="text" id="h3size" placeholder="36"></div>
+    <div class="fontsizer"><label for="psize">P Size</label><input type="text" id="psize" placeholder="16"></div>
+    <div class="colorpicker"><label for="basecolor">Base</label><input type="color" id="basecolor"></div>
+    <div class="colorpicker"><label for="primarycolor">Primary</label><input type="color" id="primarycolor"></div>
+    <div class="colorpicker"><label for="secondarycolor">Secondary</label><input type="color" id="secondarycolor"></div>
+    <div class="colorpicker"><label for="tertiarycolor">Tertiary</label><input type="color" id="tertiarycolor"></div>
+</div>
+
+<div class="style_board">
+    <section class="typography">
+        <div class="heading">
+            Typography
+        </div>
+        <div class="info">
+            <div class="item h1">
+                <h1>Heading 1</h1>
+                <div class="item_sub">H1 &mdash; <span class="font-size"></span> // <span class="font_name">Poppins Semibold</span></div>
+            </div>
+            <div class="item h2">
+                <h2>Heading 2</h2>
+                <div class="item_sub">H2 &mdash; <span class="font-size"></span> // <span class="font_name">Poppins Semibold</span></div>
+            </div>
+            <div class="item h3">
+                <h3>Heading 3</h3>
+                <div class="item_sub">H3 &mdash; <span class="font-size"></span> // <span class="font_name">Poppins Semibold</span></div>
+            </div>
+            <div class="item p">
+                <p>A billion trillion courage of our questions radio telescope decipherment Vangelis tendrils of gossamer clouds. Extraplanetary not a sunrise but a galaxyrise Apollonius of Perga permanence of the stars Sea of Tranquility extraplanetary.</p>
+                <div class="item_sub">P &mdash; <span class="font-size"></span> // <span class="font_name">Poppins Regular</span></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="colors">
+        <div class="heading">
+            Colors
+        </div>
+        <div class="info">
+            <div class="item base_color">
+                <div class="swatch swatch_1"></div>
+                <div class="swatch_details">
+                    <div class="name">Base</div>
+                    <div class="item_sub">#2C2C2C</div>
+                </div>
+            </div>
+            <div class="item primary_color">
+                <div class="swatch swatch_2"></div>
+                <div class="swatch_details">
+                    <div class="name">Primary</div>
+                    <div class="item_sub">#EB5723</div>
+                </div>
+            </div>
+            <div class="item secondary_color">
+                <div class="swatch swatch_3"></div>
+                <div class="swatch_details">
+                    <div class="name">Secondary</div>
+                    <div class="item_sub">#3381F5</div>
+                </div>
+            </div>
+            <div class="item tertiary_color">
+                <div class="swatch swatch_4"></div>
+                <div class="swatch_details">
+                    <div class="name">Tertiary</div>
+                    <div class="item_sub">#8BDB9D</div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    
+    <section class="buttons">
+        <div class="heading">Buttons</div>
+        <div class="info">
+            <div class="item">
+                <div class="name">Primary</div>
+                <div class="button_group primary">
+                    <button class="button">Click Here</button>
+                    <button class="button button-icon">Click Here <i class="far fa-chevron-right"></i></button>
+                    <button class="button button-hovered">Hovered</button>
+                </div>
+                <div class="item_sub">The primary button is used for important call-to-actions, typically using your primary brand color</div>
+            </div>
+            <div class="item">
+                <div class="name">Secondary</div>
+                <div class="button_group secondary">
+                    <button class="button">Click Here</button>
+                    <button class="button button-icon">Click Here <i class="far fa-chevron-right"></i></button>
+                    <button class="button button-hovered">Hovered</button>
+                </div>
+                <div class="item_sub">The secondary button is used for less important actions within proximity of the primary button</div>
+            </div>
+            <div class="item">
+                <div class="name">Ghost/Text</div>
+                <div class="button_group ghost">
+                    <button class="button">Click Here</button>
+                    <button class="button button-icon">Click Here <i class="far fa-chevron-right"></i></button>
+                    <button class="button button-hovered">Hovered</button>
+                </div>
+                <div class="item_sub">The text or ghost button is typically used as a highlighted link and not a true call-to-action</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="logo">
+        <div class="heading">Logo/Branding</div>
+        <div class="info">
+            <div class="item">
+                <img src="../images/atom_logo.svg" alt="">
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="footer">
+    <div class="info">
+        <div class="company_name"></div>
+        <div class="version">Style Board // Version <span></span></div>
+    </div>
+    <div class="ewd">
+        <img src="https://eternitymarketing.com/images/eternity-logo.svg" alt="">
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<script>
+
+    //Setting Defaults
+    var CompanyName = 'Company Name';
+    var Version = '1.0';
+    var BaseColor = '#2C2C2C';
+    var PrimaryColor = '#EB5723';
+    var SecondaryColor = '#3381F5';
+    var TertiaryColor = '#8BDB9D';
+    
+    var H1Size = '72px';
+    var H2Size = '48px';
+    var H3Size = '36px';
+    var PSize = '16px';
+    
+    var PrimaryColorDark = LightenDarkenColor(PrimaryColor, -30); 
+    var SecondaryColorDark = LightenDarkenColor(SecondaryColor, -30); 
+    var TertiaryColorDark = LightenDarkenColor(TertiaryColor, -30);
+    
+    var PrimaryColorLight = LightenDarkenColor(PrimaryColor, 100); 
+    var SecondaryColorLight = LightenDarkenColor(SecondaryColor, 40); 
+    var TertiaryColorLight = LightenDarkenColor(TertiaryColor, 40);
+
+    $('#name').keyup(function() {
+        CompanyName = $(this).val();
+        $('.company_name').text(CompanyName);
+    });
+    $('#version').keyup(function() {
+        Version = $(this).val();
+        $('.version').text(Version);
+    });
+    //Font Size change
+    $('#h1size').keyup(function() {
+        H1Size = $(this).val();
+        $('.item.h1 h1').css('font-size',H1Size+'px');
+        $('.item.h1 .item_sub span.font-size').text(H1Size+'px');
+    });    
+    $('#h2size').keyup(function() {
+        H2Size = $(this).val();
+        $('.item.h2 h2').css('font-size',H2Size+'px');
+        $('.item.h2 .item_sub span.font-size').text(H2Size+'px');
+    });
+    $('#h3size').keyup(function() {
+        H3Size = $(this).val();
+        $('.item.h3 h3').css('font-size',H3Size+'px');
+        $('.item.h3 .item_sub span.font-size').text(H3Size+'px');
+    });
+    $('#psize').keyup(function() {
+        PSize = $(this).val();
+        $('.item.p p').css('font-size',PSize+'px');
+        $('.item.p .item_sub span.font-size').text(PSize+'px');
+    });
+    
+    //Color change
+    $('#basecolor').on('change',function() {
+        BaseColor = $(this).val();
+        $('.base_color .swatch').css('background',BaseColor);
+        $('.base_color .item_sub').text(BaseColor);
+    });
+    $('#primarycolor').on('change',function() {
+        PrimaryColor = $(this).val();
+        PrimaryColorDark = LightenDarkenColor(PrimaryColor, -30);
+        $('.primary_color .swatch').css('background',PrimaryColor);
+        $('.primary_color .item_sub').text(PrimaryColor);
+        $('.button_group.primary .button').css('background',PrimaryColor);
+        $('.button_group.ghost .button').css('color',PrimaryColor);
+        $('.button_group.primary .button-hovered').css('background',PrimaryColorDark);
+        $('.button_group.ghost .button-hovered').css('background',convertHex(PrimaryColor, 0.1));
+    });
+    $('#secondarycolor').on('change',function() {
+        SecondaryColor = $(this).val();
+        SecondaryColorDark = LightenDarkenColor(SecondaryColor, -30);
+        $('.secondary_color .swatch').css('background',SecondaryColor);
+        $('.secondary_color .item_sub').text(SecondaryColor);
+        $('.button_group.secondary .button').css('background',SecondaryColor);
+        $('.button_group.secondary .button-hovered').css('background',SecondaryColorDark);
+    });
+    $('#tertiarycolor').on('change',function() {
+        TertiaryColor = $(this).val();
+        $('.tertiary_color .swatch').css('background',TertiaryColor);
+        $('.tertiary_color .item_sub').text(TertiaryColor);
+        $('.button_group.tertiary .button').css('background',TertiaryColor);
+    });
+
+    //Company Name
+    $('.company_name').text(CompanyName);
+    $('.version span').text(Version);
+    
+    //Typography - Text 
+    $('.item.h1 .item_sub span.font-size').text(H1Size);
+    $('.item.h2 .item_sub span.font-size').text(H2Size);
+    $('.item.h3 .item_sub span.font-size').text(H3Size);
+    $('.item.p .item_sub span.font-size').text(PSize);
+    
+    //Typography - Sizes    
+    $('.item.h1 h1').css('font-size',H1Size);
+    $('.item.h2 h2').css('font-size',H2Size);
+    $('.item.h3 h3').css('font-size',H3Size);
+    $('.item.p p').css('font-size',PSize);
+    
+    //Color Default
+    $('#basecolor').val(BaseColor);
+    $('#primarycolor').val(PrimaryColor);
+    $('#secondarycolor').val(SecondaryColor);
+    $('#tertiarycolor').val(TertiaryColor);
+    
+    //Swatch - Codes
+    $('.base_color .item_sub').text(BaseColor);
+    $('.primary_color .item_sub').text(PrimaryColor);
+    $('.secondary_color .item_sub').text(SecondaryColor);
+    $('.tertiary_color .item_sub').text(TertiaryColor);
+    
+    //Swatch - Colors
+    $('.base_color .swatch').css('background',BaseColor);
+    $('.primary_color .swatch').css('background',PrimaryColor);
+    $('.secondary_color .swatch').css('background',SecondaryColor);
+    $('.tertiary_color .swatch').css('background',TertiaryColor);
+    
+    //Button - Normal
+    $('.button_group.primary .button').css('background',PrimaryColor);
+    $('.button_group.secondary .button').css('background',SecondaryColor);
+    $('.button_group.tertiary .button').css('background',TertiaryColor);
+    $('.button_group.ghost .button').css('color',PrimaryColor);
+
+    //Button - Hovered
+    $('.button_group.primary .button-hovered').css('background',PrimaryColorDark);
+    $('.button_group.secondary .button-hovered').css('background',SecondaryColorDark);
+    $('.button_group.tertiary .button-hovered').css('background',TertiaryColorDark);    
+    $('.button_group.ghost .button-hovered').css('background',convertHex(PrimaryColor, 0.1));
+    
+//Lighten/Darken for hovered buttons    
+function LightenDarkenColor(col, amt) {
+    var usePound = false;
+    if (col[0] == "#") {
+        col = col.slice(1);
+        usePound = true;
+    }
+    var num = parseInt(col,16);
+    var r = (num >> 16) + amt;
+    if (r > 255) r = 255;
+    else if  (r < 0) r = 0;
+    var b = ((num >> 8) & 0x00FF) + amt;
+    if (b > 255) b = 255;
+    else if  (b < 0) b = 0;
+    var g = (num & 0x0000FF) + amt;
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+}
+
+//Hex w Opacity for Ghost Hovered
+function convertHex(hex,opacity){
+    hex = hex.replace('#','');
+    r = parseInt(hex.substring(0,2), 16);
+    g = parseInt(hex.substring(2,4), 16);
+    b = parseInt(hex.substring(4,6), 16);
+    result = 'rgba('+r+','+g+','+b+','+opacity+')';
+    return result;
+}
+
+//Show/hide editor with "m"
+$('body').keyup(function(key){
+    if (key.which == 77){
+        $(".style_editor").toggle();
+    }
+});
+
+function SetFonts(fonts) { 
+    for (var i = 0; i < fonts.items.length; i++) {      
+        $('#headingFont').append($("<option></option>").attr("value", fonts.items[i].family).text(fonts.items[i].family));
+        $('#paraFont').append($("<option></option>").attr("value", fonts.items[i].family).text(fonts.items[i].family));
+    
+        var List = fonts.items[i].family;
+        WebFont.load({
+            google: { 
+                   families: [List]
+             } 
+         });
+    }
+}
+
+var script = document.createElement('script');
+script.src = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyD1UqScZR4TyhjGetpPyLH6nxZs6VNY2Rk&callback=SetFonts';
+document.body.appendChild(script);
+
+
+$(function(){
+    $('#headingFont').change(function(){
+      var font = $(this).val();
+      $('h1,h2,h3').css('font-family', font);
+      $('.item.h1 span.font_name').text(font);
+      $('.item.h2 span.font_name').text(font);
+      $('.item.h3 span.font_name').text(font);
+    });
+});
+
+$(function(){
+    $('#paraFont').change(function(){
+      var font = $(this).val();
+      $('p').css('font-family', font);
+      $('.item.p span.font_name').text(font);
+    });
+});
+</script>
