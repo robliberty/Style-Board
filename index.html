@@ -112,6 +112,7 @@
     <div class="colorpicker"><label for="primarycolor">Primary</label><input type="color" id="primarycolor"></div>
     <div class="colorpicker"><label for="secondarycolor">Secondary</label><input type="color" id="secondarycolor"></div>
     <div class="colorpicker"><label for="tertiarycolor">Tertiary</label><input type="color" id="tertiarycolor"></div>
+    <div class="logograb"><label for="logograb">Logo URL</label><input type="text" id="logograb"></div>
 </div>
 
 <div class="style_board">
@@ -281,6 +282,11 @@
         PSize = $(this).val();
         $('.item.p p').css('font-size',PSize+'px');
         $('.item.p .item_sub span.font-size').text(PSize+'px');
+    });
+    
+    $('#logograb').bind("change keyup input",function() {
+        var Logo = $(this).val();
+        $('.logo img').attr('src',Logo);
     });
     
     //Color change
